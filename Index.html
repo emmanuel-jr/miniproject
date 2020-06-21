@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Project</title>
+    
+    <link rel="stylesheet" href="sheet.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container-1">
+        <h2>Challenge 1: Your Age in Days</h2>
+        <div class="flex-box-container-1">
+            <div>
+                <button class="btn btn-primary" onclick="ageInDays()">Click me</button>
+            </div>
+
+            <div>
+                <button class="btn btn-danger" onclick="Reset()">reset</button>
+            </div>
+        </div>
+
+        <div class="flex-box-container-1">
+            <div id="flex-box-result"></div>
+        </div>
+
+    </div>
+
+    <div class="container-1">
+        <h2>Challenge 2: Cat Generator</h2>
+        <div class="flex-box-container-1">
+            <button class="btn btn-success" onclick="Cat()">Generate Cat</button>
+        </div>
+
+        <div class="flex-box-container-2" id="cat-gen"></div>
+    </div>
+
+    <div class="container-1">
+        <h2>Challenge 3: Rock, Paper, Scissors</h2>
+        <div class="flex-box-rps" id="flex-box-rps-div">
+            <img id="rock" src="https://www.thoughtco.com/thmb/_R9hnWbJjGon7cw6RsB30C1tU5o=/768x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/rhyolite-1057171452-5c911d4b46e0fb000187a397.jpg" alt="" width="150" height="150" onclick="rps(this)">
+            <img id="paper" src="https://i1.sndcdn.com/artworks-000119263710-467zz1-t500x500.jpg" alt="" width="150" height="150" onclick="rps(this)">
+            <img id="scissors" src="https://www.creativememories.ca/pub/media/catalog/product/cache/6d822c1bee790df8a0dce4889d0c65fe/a/l/all-purpose-scissors-creative-memories-655118-02.jpg" alt="" width="150" height="150" onclick="rps(this)">
+        </div>
+    </div>
+
+    <div class="container-1">
+        <h2>Challenge 4: Change Color of all Butttons</h2>
+        <div class="flex-box-color">
+            <form action="">
+                <select name="backdrop" id="background" onchange="colorChange(this)">
+                    <option value="random">Random</option>
+                    <option value="red">Red</option>
+                    <option value="green">Green</option>
+                    <option value="reset">Reset</option>
+                </select>
+            </form>
+
+            <button class="btn btn-primary" onclick="">FaceBook</button>
+            <button class="btn btn-danger" onclick="">Reddit</button>
+            <button class="btn btn-warning" onclick="">Yelp</button>
+            <button class="btn btn-success" onclick="">WhatsApp</button>
+        </div>
+
+        <div class="flex-box-container-2" id="cat-gen"></div>
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
