@@ -158,3 +158,196 @@ function buttonReset()
         all_buttons[i].classList.add(buttonCpy[i]);
         }
 }
+
+
+
+//challenge 5
+let blackJackGame = {
+    'you': {'result': '#your-bj-result', 'div': '#your-box', 'score': 0},
+    'dealer': {'result': '#dealer-bj-result', 'div': '#dealer-box', 'score': 0},
+    'cards': ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'K', 'J', 'Q', 'A'],
+    'cardValue': {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'K': 10, 'J': 10, 'Q': 10, 'A': [1, 11]},
+    'wins': 0,
+    'losses': 0,
+    'draws': 0,
+}
+
+const YOU = blackJackGame['you'];
+const DEALER = blackJackGame['dealer'];
+const CARD = blackJackGame['cards'];
+const sound = new Audio('sounds/swish.m4a');
+const won = new Audio('sounds/cash.mp3');
+const lost = new Audio('sounds/aww.mp3');
+
+
+Hit = () => {
+    document.getElementById('deal-button').disabled = true;
+    document.getElementById('stand-button').disabled = false;
+    let n = Math.floor(Math.random() * 13);
+
+    cardShow(YOU, CARD[n]);
+    updateScore(YOU, CARD[n]);
+    showScore(YOU);
+
+    if (document.querySelector(YOU['result']).textContent === 'BUST!') {
+        document.getElementById('hit-button').disabled = true;
+    }
+}
+
+
+Stand = () => {
+    let n = Math.floor(Math.random() * 13);
+    cardShow(DEALER, CARD[n]);
+    updateScore(DEALER, CARD[n]);
+    showScore(DEALER);
+
+    if (DEALER['score'] <= 15) {
+        setTimeout(Stand, 1500);
+    }
+    
+    if (DEALER['score'] > 15) {
+    showResult(whoWon());
+    }
+}
+
+
+cardShow = (activeOne, c) => {
+    let card = document.createElement('img');
+    card.src = `images/${c}.png`;
+    card.height = "150";
+    card.width = "100";
+    card.style.padding = "8";
+    document.querySelector(activeOne['div']).appendChild(card);
+    sound.play();
+}
+
+
+deal = () => {
+    let yourImage = document.querySelector('#your-box').querySelectorAll('img');
+    let dealerImage = document.querySelector('#dealer-box').querySelectorAll('img');
+    
+    for (let i = 0; yourImage.length > i; i++) {
+        yourImage[i].remove();
+    }
+
+    for (let i = 0; dealerImage.length > i; i++) {
+        dealerImage[i].remove();
+    }
+
+    document.getElementById('stand-button').disabled = true;
+    document.getElementById('hit-button').disabled = false;
+
+    YOU['score'] = 0;
+    DEALER['score'] = 0;
+    document.querySelector(YOU['result']).textContent = 0;
+    document.querySelector(DEALER['result']).textContent = 0;
+    document.querySelector(YOU['result']).style.color = 'white';
+    document.querySelector(DEALER['result']).style.color = 'white';
+
+    document.querySelector('#bj-result').textContent = "Let's Play";
+    document.querySelector('#bj-result').style.color = 'black';
+}
+
+updateScore = (activeOne, card) => {
+    let currentCard = blackJackGame['cardValue'][card];
+
+    if (card === 'A') {
+        if (activeOne['score'] + blackJackGame['cardValue'][card][1] > 21) {
+            currentCard = blackJackGame['cardValue'][card][0];
+        }
+        else {
+            currentCard = blackJackGame['cardValue'][card][1];
+        }
+    }
+
+    activeOne['score'] += currentCard;
+}
+
+
+showScore = (activeOne) => {
+    if (activeOne['score'] <= 21) {
+    document.querySelector(activeOne['result']).textContent = activeOne['score'];
+    }
+    else {
+        document.querySelector(activeOne['result']).textContent = 'BUST!';
+        document.querySelector(activeOne['result']).style.color = 'red';
+    }
+}
+
+whoWon = () => {
+    let winner;
+
+    if (document.querySelector(YOU['result']).textContent === document.querySelector(DEALER['result']).textContent) {
+        winner = undefined;
+        blackJackGame.draws++;
+    }
+
+    else if (YOU['score'] <= 21 && DEALER['score'] <= 21) {
+        if (YOU['score'] > DEALER['score']) {
+            winner = YOU;
+            blackJackGame.wins++;
+        }
+        else {
+            winner = DEALER;
+            blackJackGame.losses++;
+        }
+    }
+
+    else {
+        if (DEALER['score'] > 21) {
+            winner = YOU;
+            blackJackGame.wins++;
+        }
+        else {
+            winner = DEALER;
+            blackJackGame.losses++;
+        }
+    }
+
+    return winner;
+}
+
+showResult = (theResult) => {
+    let message, messageColor;
+
+    if (theResult === YOU) {
+        message = 'You won!';
+        messageColor = 'green';
+        document.querySelector('#wins').textContent = blackJackGame.wins;
+        won.play();
+    }
+
+    if (theResult === DEALER) {
+        message = 'You lost!';
+        messageColor = 'red';
+        document.querySelector('#losses').textContent = blackJackGame.losses;
+        lost.play();
+    }
+
+    if (theResult === undefined) {
+        message = 'You drew!';
+        messageColor = 'black';
+        document.querySelector('#draws').textContent = blackJackGame.draws;
+    }
+
+    document.querySelector('#bj-result').textContent = message;
+    document.querySelector('#bj-result').style.color = messageColor;
+    document.getElementById('deal-button').disabled = false;
+}
+
+
+ction = (button, bool) => {
+    button.disabled = bool;
+    document.getElementById('hit-button').disabled = bool;
+}
+
+window.onload = () => {
+    document.getElementById('stand-button').disabled = true;
+}
+
+document.querySelector('#hit-button').addEventListener('click', Hit);
+document.querySelector('#stand-button').addEventListener('click', Stand);
+document.querySelector('#deal-button').addEventListener('click', deal);
+
+
+

@@ -61,8 +61,44 @@
             <button class="btn btn-warning" onclick="">Yelp</button>
             <button class="btn btn-success" onclick="">WhatsApp</button>
         </div>
+    </div>
 
-        <div class="flex-box-container-2" id="cat-gen"></div>
+    <div class="container-1">
+        <h2>Challenge 5: Blackjack</h2>
+        <h3><span id="bj-result">Let's Play</span></h3>
+
+        <div class="table-row">
+            <div class="bj-row-1">
+                <div id="your-box">
+                    <h2>You: <span id="your-bj-result">0</span></h2>
+                </div> 
+                <div id="dealer-box">
+                    <h2>Dealer: <span id="dealer-bj-result">0</span></h2>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn-lg btn-primary mr-2" id="hit-button"  onclick="">Hit</button>
+                <button class="btn-lg btn-warning mr-2" id="stand-button" onclick="ction(this, true)">Stand</button>
+                <button class="btn-lg btn-danger mr-2" id="deal-button" onclick="">Deal</button>
+            </div>
+        </div>
+
+        <div class="bj-row-3">
+            <table>
+                <tr>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>Draws</th>
+                </tr>
+
+                <tr>
+                    <td><span id="wins">0</span></td>
+                    <td><span id="losses">0</span></td>
+                    <td><span id="draws">0</span></td>
+                </tr>
+            </table>
+        </div>
     </div>
 
 
