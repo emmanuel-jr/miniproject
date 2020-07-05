@@ -8,7 +8,23 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container-1">
+    <div id="offcanvas-left" class="hide">
+        <ul></br>
+            <li><a href="#first">Challenge 1: Your Age in Days </a></li>
+            <li><a href="#second">Challenge 2: Cat Generator </a></li>
+            <li><a href="#third">Challenge 3: Rock, Paper, Scissors </a></li>
+            <li><a href="#fourth">Challenge 4: Change Color of all Buttons</a></li>
+            <li><a href="#fifth">Challenge 5: Blackjack </a></li>
+        </ul>
+    </div>
+    <div class="togglebar">
+        <!-- adds the class of hide to .offcanvas.left -->
+        <div class="toggle" onclick="toggleLeft()">
+            <i class="fa fa-bars"></i>
+        </div>
+    </div>
+    <div id="center">
+    <div class="container-1" id="first">
         <h2>Challenge 1: Your Age in Days</h2>
         <div class="flex-box-container-1">
             <div>
@@ -26,7 +42,7 @@
 
     </div>
 
-    <div class="container-1">
+    <div class="container-1" id="second">
         <h2>Challenge 2: Cat Generator</h2>
         <div class="flex-box-container-1">
             <button class="btn btn-success" onclick="Cat()">Generate Cat</button>
@@ -35,7 +51,7 @@
         <div class="flex-box-container-2" id="cat-gen"></div>
     </div>
 
-    <div class="container-1">
+    <div class="container-1" id="third">
         <h2>Challenge 3: Rock, Paper, Scissors</h2>
         <div class="flex-box-rps" id="flex-box-rps-div">
             <img id="rock" src="https://www.thoughtco.com/thmb/_R9hnWbJjGon7cw6RsB30C1tU5o=/768x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/rhyolite-1057171452-5c911d4b46e0fb000187a397.jpg" alt="" width="150" height="150" onclick="rps(this)">
@@ -44,8 +60,8 @@
         </div>
     </div>
 
-    <div class="container-1">
-        <h2>Challenge 4: Change Color of all Butttons</h2>
+    <div class="container-1" id="fourth">
+        <h2>Challenge 4: Change Color of all Buttons</h2>
         <div class="flex-box-color">
             <form action="">
                 <select name="backdrop" id="background" onchange="colorChange(this)">
@@ -63,17 +79,17 @@
         </div>
     </div>
 
-    <div class="container-1">
+    <div class="container-1" id="fifth">
         <h2>Challenge 5: Blackjack</h2>
         <h3><span id="bj-result">Let's Play</span></h3>
 
         <div class="table-row">
             <div class="bj-row-1">
                 <div id="your-box">
-                    <h2>You: <span id="your-bj-result">0</span></h2>
+                    <h2 style="color: white;">You: <span id="your-bj-result">0</span></h2>
                 </div> 
                 <div id="dealer-box">
-                    <h2>Dealer: <span id="dealer-bj-result">0</span></h2>
+                    <h2 style="color: white;">Dealer: <span id="dealer-bj-result">0</span></h2>
                 </div>
             </div>
 
@@ -99,6 +115,7 @@
                 </tr>
             </table>
         </div>
+    </div>
     </div>
 
 

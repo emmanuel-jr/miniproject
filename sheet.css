@@ -1,8 +1,102 @@
+@import url(https://use.fontawesome.com/releases/v5.0.6/css/all.css);
+
+h2, #bj-result {
+    color: rgb(100, 72, 72);
+}
+
+body {
+    display: flex;
+}
+
+#offcanvas-left, #offcanvas-right {
+    flex: 0 0 280px;
+    background-color: #111;
+    color: white;
+    transition-duration: .5s;
+}
+
+#offcanvas-left.hide {
+    margin-left: -280px;
+}
+
+#offcanvas-right.hide {
+    margin-right: -280px;
+}
+
+#offcanvas-left ul,
+#offcanvas-right ul {
+    padding: 30px 0 0 0;
+    position: fixed;
+}
+
+#offcanvas-left ul li,
+#offcanvas-right ul li {
+    color: white;
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 0;
+    padding: 10px; 
+    border-bottom: 1px solid #222;
+    display: flex;
+}
+
+#center {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-width: 95%;
+} 
+
+#offcanvas-left a,
+#offcanvas-right a {
+    color: white;
+    text-decoration: none;
+    /* display: flex;
+    flex-wrap: wrap; */
+}
+
+#offcanvas-left li:hover a,
+#offcanvas-right li:hover a {
+    color: var(--first-color);
+}
+
+.togglebar {
+    background-color: #232323;
+    flex: 0 0;
+    min-width: 50px;
+    max-width: 5px;
+    height: 50px;
+    position: fixed;
+}
+
+.toggle i {
+    height: 50px;
+    font-size: 1.4em;
+    width: 100%;
+    color: var(--first-color);
+    display: flex;   
+    align-items: center;
+    justify-content: center;
+    background-color: #111;
+}
+
+.toggle i:hover {
+    color: wheat;
+    background-color: burlywood;
+    cursor: pointer;
+}
+
 .container-1 {
     border: 1px solid black;
     width: 75%;
     margin: auto;
     text-align: center;
+    background-color: aliceblue;
+    flex: 0 0 40px;
+    color: white;
+    
+    /* justify-content: center; */
+    padding: 20px;
 }
 
 .flex-box-container-1, .flex-box-container-2, .flex-box-rps, .flex-box-color, .bj-row-1, .btn-group, .bj-row-3 {

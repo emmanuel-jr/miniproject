@@ -5,4 +5,3 @@ Collection of projects:
 - Rock, Paper, Scissors Game
 - Change Color of Buttons
 - Blackjack
-
